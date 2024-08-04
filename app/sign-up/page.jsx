@@ -43,6 +43,7 @@ const SignUp = () => {
       background: 'linear-gradient(135deg, #fbc2eb 0%, #a6c0fe 100%)',
       fontFamily: 'PT Sans, sans-serif',
       padding: '1rem',
+      position: 'relative'
     }}>
       <div style={{
         position: 'absolute',
