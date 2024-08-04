@@ -312,7 +312,7 @@ export default function Home() {
           color={theme.textColor}
           sx={{ fontFamily: "PT Sans, sans-serif", textAlign: 'center', color: theme.textColor, opacity: 0.6 }}
         >
-          Your pantry is empty. Let's go grocery shopping!
+          Your pantry is empty. Let&apos;s go grocery shopping!
         </Typography>
         ) : (
           filteredInventory.map(({ name, quantity }) => (
