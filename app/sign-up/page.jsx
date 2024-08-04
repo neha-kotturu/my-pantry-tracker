@@ -48,7 +48,8 @@ const SignUp = () => {
         position: 'absolute',
         top: '2vw',
         left: '2.5vw',
-        zIndex: '2'
+        zIndex: '2',
+        textAlign: 'center',
       }}>
         <Link href="/" style={{ textDecoration: 'none' }}>
           <h1 style={{
