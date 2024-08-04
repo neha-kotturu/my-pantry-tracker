@@ -1,4 +1,3 @@
-// pages/index.js
 'use client'
 import React from 'react';
 import { useRouter } from 'next/navigation';
@@ -25,7 +24,6 @@ const Home = () => {
       overflow: 'hidden',
       position: 'relative',
     }}>
-      {/* Floating shapes with content */}
       <div style={{
         position: 'absolute',
         top: '5vw',
@@ -43,7 +41,6 @@ const Home = () => {
         justifyContent: 'center',
         overflow: 'hidden',
       }}>
-        
         <div style={{
           fontSize: '3.5vw',
           color: '#ec4899',
@@ -78,7 +75,6 @@ const Home = () => {
           🍄
         </div>
       </div>
-
 
       <div style={{
         position: 'absolute',
@@ -132,7 +128,6 @@ const Home = () => {
         </div>
       </div>
 
-
       <div style={{
         position: 'absolute',
         bottom: '3vw',
@@ -158,7 +153,7 @@ const Home = () => {
           🥑
         </div>
       </div>
-      
+
       <div style={{
         position: 'absolute',
         bottom: '5vw',
@@ -195,7 +190,7 @@ const Home = () => {
       }}>
         <h1 style={{
           color: '#13023d',
-          fontSize: '3.5rem',
+          fontSize: 'clamp(2rem, 5vw, 3.5rem)',
           marginBottom: '1.5rem',
           fontWeight: '700',
           textShadow: '2px 2px 6px rgba(0,0,0,0.3)',
@@ -205,7 +200,7 @@ const Home = () => {
         </h1>
         <p style={{
           color: '#38011a',
-          fontSize: '1.25rem',
+          fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
           marginTop: '3vw',
           marginBottom: '2.5rem',
           lineHeight: '1.6',
@@ -231,7 +226,7 @@ const Home = () => {
               border: 'none',
               borderRadius: '0.75rem',
               color: '#ffffff',
-              fontSize: '1.1rem',
+              fontSize: 'clamp(1rem, 2.5vw, 1.1rem)',
               cursor: 'pointer',
               fontWeight: '600',
               transition: 'transform 0.3s ease, background-color 0.3s ease',
@@ -273,7 +268,7 @@ const Home = () => {
               border: 'none',
               borderRadius: '0.75rem',
               color: '#ffffff',
-              fontSize: '1.1rem',
+              fontSize: 'clamp(1rem, 2.5vw, 1.1rem)',
               cursor: 'pointer',
               fontWeight: '600',
               transition: 'transform 0.3s ease, background-color 0.3s ease',
@@ -335,6 +330,32 @@ const Home = () => {
           }
           60% {
             transform: translateY(-15px);
+          }
+        }
+
+        @media (max-width: 600px) {
+          h1 {
+            font-size: 2.5rem;
+          }
+          p {
+            font-size: 1rem;
+          }
+          button {
+            font-size: 0.9rem;
+            padding: 0.8rem 2rem;
+          }
+        }
+        
+        @media (max-width: 400px) {
+          h1 {
+            font-size: 2rem;
+          }
+          p {
+            font-size: 0.875rem;
+          }
+          button {
+            font-size: 0.8rem;
+            padding: 0.7rem 1.8rem;
           }
         }
       `}</style>
