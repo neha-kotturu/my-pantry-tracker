@@ -37,7 +37,7 @@ export default function Home() {
   const updateInventory = async () => {
     if (!user) return;
 
-    const snapshot = query(collection(firestore, `users/${user.uid}/inventory`));
+    const snapshot = query(collection(firestore, 'users/${user.uid}/inventory'));
     const docs = await getDocs(snapshot);
     const inventoryList = [];
     docs.forEach((doc) => {
