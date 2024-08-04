@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { getAuth, signOut } from 'firebase/auth';
 import { firestore, auth } from '@/app/myfirebase/firebase';
-import { Box, Modal, Typography, Stack, TextField, Button, IconButton, CircularProgress } from '@mui/material';
+import { Box, Modal, Typography, Stack, TextField, Button, IconButton } from '@mui/material';
 import { collection, deleteDoc, doc, getDocs, query, getDoc, setDoc } from 'firebase/firestore';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
@@ -37,7 +37,7 @@ export default function Home() {
   const updateInventory = async () => {
     if (!user) return;
 
-    const snapshot = query(collection(firestore, 'users/${user.uid}/inventory'));
+    const snapshot = query(collection(firestore, `users/${user.uid}/inventory`));
     const docs = await getDocs(snapshot);
     const inventoryList = [];
     docs.forEach((doc) => {
@@ -82,7 +82,9 @@ export default function Home() {
   };
 
   useEffect(() => {
-    updateInventory();
+    if (user) {
+      updateInventory();
+    }
   }, [user]);
 
   const handleOpen = () => setOpen(true);
@@ -226,9 +228,11 @@ export default function Home() {
             <Button
               variant="contained"
               onClick={() => {
-                addItem(itemName)
-                setItemName('')
-                handleClose()
+                if (itemName) {
+                  addItem(itemName)
+                  setItemName('')
+                  handleClose()
+                }
               }}
               sx={{
                 backgroundColor: "#fff",
@@ -306,14 +310,14 @@ export default function Home() {
             input: { color: theme.textFieldColor, fontFamily: "PT Sans, sans-serif" }
           }}
         />
-        {inventory.length === 0 ? (
+        {filteredInventory.length === 0 ? (
           <Typography
-          variant="h6"
-          color={theme.textColor}
-          sx={{ fontFamily: "PT Sans, sans-serif", textAlign: 'center', color: theme.textColor, opacity: 0.6 }}
-        >
-          Your pantry is empty. Let&apos;s go grocery shopping!
-        </Typography>
+            variant="h6"
+            color={theme.textColor}
+            sx={{ fontFamily: "PT Sans, sans-serif", textAlign: 'center', opacity: 0.6 }}
+          >
+            Your pantry is empty. Lets go grocery shopping!
+          </Typography>
         ) : (
           filteredInventory.map(({ name, quantity }) => (
             <Box
@@ -330,7 +334,7 @@ export default function Home() {
                 borderRadius: '8px',
                 boxShadow: darkMode ? '0 4px 8px rgba(255, 255, 255, 0.2)' : '0 4px 8px rgba(0, 0, 0, 0.1)',
                 transition: 'box-shadow 0.3s ease-in-out',
-                marginBottom: 2, // Increased spacing between items
+                marginBottom: 2,
                 '&:hover': {
                   boxShadow: darkMode ? '0 8px 16px rgba(255, 255, 255, 0.3)' : '0 8px 16px rgba(0, 0, 0, 0.2)',
                 }
