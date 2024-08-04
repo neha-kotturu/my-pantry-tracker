@@ -1,16 +1,16 @@
 'use client';
 import { useState } from 'react';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { auth, firestore } from '@/app/myfirebase/firebase'; // Ensure your firebase config is correctly imported
-import { collection, doc, setDoc } from 'firebase/firestore'; // Import Firestore functions
+import { auth, firestore } from '@/app/myfirebase/firebase';
+import { collection, doc, setDoc } from 'firebase/firestore';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link'; // Import Link component
+import Link from 'next/link';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [createUserWithEmailAndPassword, userCredential, loading, error] = useCreateUserWithEmailAndPassword(auth);
-  const router = useRouter(); // Initialize router
+  const router = useRouter();
 
   const handleSignUp = async () => {
     try {
@@ -19,7 +19,6 @@ const SignUp = () => {
         const user = res.user;
         console.log('User created:', user);
   
-        // Create user document in Firestore
         await setDoc(doc(firestore, 'users', user.uid), {
           email: user.email,
           createdAt: new Date(),
@@ -42,8 +41,8 @@ const SignUp = () => {
       alignItems: 'center',
       justifyContent: 'center',
       background: 'linear-gradient(135deg, #fbc2eb 0%, #a6c0fe 100%)',
-      fontFamily: 'PT Sans, sans-serif', // Applying the font family
-      padding: '1rem', // Add padding for mobile
+      fontFamily: 'PT Sans, sans-serif',
+      padding: '1rem',
     }}>
       <div style={{
         position: 'absolute',
@@ -51,12 +50,12 @@ const SignUp = () => {
         left: '2.5vw',
         zIndex: '2'
       }}>
-        <Link href="/" style={{ textDecoration: 'none' }}> {/* Remove underline */}
+        <Link href="/" style={{ textDecoration: 'none' }}>
           <h1 style={{
             color: '#151045',
             fontSize: '2rem',
             fontWeight: '700',
-            textDecoration: 'none', // Ensure no underline
+            textDecoration: 'none',
             fontFamily: 'PT Sans, sans-serif',
             cursor: 'pointer'
           }}>
@@ -70,7 +69,7 @@ const SignUp = () => {
         borderRadius: '0.75rem',
         boxShadow: '0 15px 30px rgba(0, 0, 0, 0.2)',
         width: '100%',
-        maxWidth: '30rem', // Restrict max width for larger screens
+        maxWidth: '30rem',
         position: 'relative',
         zIndex: '1'
       }}>
