@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { getAuth, signOut } from 'firebase/auth';
-import CircularProgress from '@mui/material/CircularProgress'; // Import MUI spinner
+import CircularProgress from '@mui/material/CircularProgress';
 
 const SignOut = () => {
   const router = useRouter();
@@ -14,14 +14,14 @@ const SignOut = () => {
     const handleSignOut = async () => {
       try {
         // Simulate a delay
-        await new Promise(resolve => setTimeout(resolve, 1000)); // 1-second delay
+        await new Promise(resolve => setTimeout(resolve, 1000));
         
         await signOut(auth);
-        router.push('/sign-in'); // Redirect to sign-in page
+        router.push('/sign-in');
       } catch (error) {
         console.error('Error signing out:', error);
       } finally {
-        setLoading(false); // Set loading to false after sign-out attempt
+        setLoading(false);
       }
     };
 
@@ -31,7 +31,7 @@ const SignOut = () => {
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: '#f0f0f0' }}>
       {loading ? (
-        <CircularProgress /> // Show spinner while loading
+        <CircularProgress />
       ) : (
         <h1>Redirecting...</h1> // Message shown after loading
       )}
