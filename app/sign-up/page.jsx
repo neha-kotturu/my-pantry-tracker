@@ -46,8 +46,9 @@ const SignUp = () => {
     }}>
       <div style={{
         position: 'absolute',
-        top: '2vw',
-        left: '2.5vw',
+        top: '2rem',
+        left: '50%',
+        transform: 'translateX(-50%)',
         zIndex: '2',
         textAlign: 'center',
       }}>
@@ -58,7 +59,8 @@ const SignUp = () => {
             fontWeight: '700',
             textDecoration: 'none',
             fontFamily: 'PT Sans, sans-serif',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            margin: 0,
           }}>
             My Pantry Tracker
           </h1>
